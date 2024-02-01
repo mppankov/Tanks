@@ -20,6 +20,6 @@ if (PHP_VERSION_ID < 50600) {
     );
 }
 
-require_once __DIR__ . '/autoload.php';
+require_once __DIR__ . '../vendor/autoload.php';
 
 return ComposerAutoloaderInit239efb79427bb134490357f17a75585a::getLoader();

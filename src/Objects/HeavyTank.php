@@ -1,6 +1,6 @@
 <?php
 
-namespace Pr2\TheTanksGame\Objects;
+namespace User\Tanks\Objects;
 
 class HeavyTank extends Tank
 {

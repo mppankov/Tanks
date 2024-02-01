@@ -1,10 +1,10 @@
 <?php
 
-namespace Pr2\TheTanksGame\Factory;
+namespace User\Tanks\Factory;
 
-use Pr2\TheTanksGame\Objects\HeavyTank;
-use Pr2\TheTanksGame\Objects\LiteTank;
-use Pr2\TheTanksGame\Objects\MediumTank;
+use User\Tanks\Objects\HeavyTank;
+use User\Tanks\Objects\MediumTank;
+use User\Tanks\Objects\LiteTank;
 
 
 
