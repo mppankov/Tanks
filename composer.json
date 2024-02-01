@@ -1,0 +1,19 @@
+{
+    "name": "user/tanks",
+    "description": "Tanks",
+    "type": "project",
+    "license": "n",
+    "autoload": {
+        "psr-4": {
+            "User\\Tanks\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "mppankov",
+            "email": "pankov.mp@yandex.ru"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
