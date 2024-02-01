@@ -3,7 +3,7 @@
 
 use User\Tanks\Game\Game;
 
-require_once __DIR__.'./vendor/autoload.php';
+require_once __DIR__.'/vendor/autoload.php';
 
 
 $game = new Game();
