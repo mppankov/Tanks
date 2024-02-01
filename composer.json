@@ -1,5 +1,5 @@
 {
-    "name": "user/tanks",
+    "name": "mppankov/tanks",
     "description": "Tanks",
     "type": "project",
     "require": {
@@ -11,7 +11,7 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "User\\Tanks\\": "src/"
+            "mppankov\\tanks\\": "src/"
         }
     },
     "authors": [

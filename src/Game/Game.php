@@ -1,10 +1,10 @@
 <?php
 
-namespace User\Tanks\Game;
+namespace mppankov\tanks\Game;
 
 
-use User\Tanks\Objects\Team;
-use User\Tanks\Factory\TankFactory;
+use mppankov\tanks\Objects\Team;
+use mppankov\tanks\Factory\TankFactory;
 
 
 class Game

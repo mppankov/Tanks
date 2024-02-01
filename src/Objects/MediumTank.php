@@ -1,6 +1,6 @@
 <?php
 
-namespace User\Tanks\Objects;
+namespace mppankov\tanks\Objects;
 
 class MediumTank extends Tank
 {

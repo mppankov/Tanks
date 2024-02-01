@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
-        'name' => 'user/tanks',
+        'name' => 'mppankov/tanks',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '5272ac80fd06795286e9113f684b8e9374e1a617',
+        'reference' => '984f187c0f154236afa12af05a458c8ff40a862b',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -34,6 +34,15 @@
             'reference' => '45b30f99ac27b5ca93cb4831afe16285f57b8221',
             'type' => 'library',
             'install_path' => __DIR__ . '/../guzzlehttp/psr7',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'mppankov/tanks' => array(
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => '984f187c0f154236afa12af05a458c8ff40a862b',
+            'type' => 'project',
+            'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
             'dev_requirement' => false,
         ),
@@ -135,7 +144,7 @@
         'phpunit/phpunit' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '280b0e9ecf2086b8ac5248a576baedd1b28448fc',
+            'reference' => '83443c7a0266a5afb72c6a3f9bb57a51494359a2',
             'type' => 'library',
             'install_path' => __DIR__ . '/../phpunit/phpunit',
             'aliases' => array(
@@ -387,15 +396,6 @@
             'install_path' => __DIR__ . '/../theseer/tokenizer',
             'aliases' => array(),
             'dev_requirement' => true,
-        ),
-        'user/tanks' => array(
-            'pretty_version' => 'dev-main',
-            'version' => 'dev-main',
-            'reference' => '5272ac80fd06795286e9113f684b8e9374e1a617',
-            'type' => 'project',
-            'install_path' => __DIR__ . '/../../',
-            'aliases' => array(),
-            'dev_requirement' => false,
         ),
     ),
 );

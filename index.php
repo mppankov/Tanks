@@ -1,7 +1,7 @@
 <?php
 
 
-use User\Tanks\Game\Game;
+use mppankov\tanks\Game\Game;
 
 require_once __DIR__.'/vendor/autoload.php';
 
