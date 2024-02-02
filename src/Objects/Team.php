@@ -17,13 +17,6 @@ class Team
         return "Название команды: {$this->name}\n";
     }
 
-    public function getRecharge(): void
-    {
-        foreach ($this->tanks as $tank){
-
-            $tank->processRecharge();
-        }
-    }
     public function getTypeTank(): string
     {
         $specification = [];

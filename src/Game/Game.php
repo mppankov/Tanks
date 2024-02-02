@@ -69,8 +69,6 @@ class Game
         var_dump("Раунд между командами: " . $teamA->name . " и " . $teamB->name . "\n\n");
 
         do {
-            $teamA->getRecharge();
-            $teamB->getRecharge();
             $tankAttackA = $teamA->getRandomReadyTank();
             $tankAttackB = $teamB->getRandomReadyTank();
             $tankAttackedA = $teamA->getRandAliveTank();

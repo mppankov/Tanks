@@ -2,71 +2,34 @@
 
 namespace mppankov\tanks\Objects;
 
+use mppankov\tanks\Components\Armor\Armor;
+use mppankov\tanks\Components\Chassis\Chassis;
+use mppankov\tanks\Components\Towers\Towers;
+
 class Tank
 {
-    public float $damage;
-    public float $health;
-    public float $numberCriticalShot;
-    public float $dodging;
-    public float $dynamicProtection;
-    public float $rechargeStatus;
-    public float $timeRecharge;
+    public Armor $armor;
+    public Chassis $chassis;
+    public Towers $towers;
+    public int $health;
 
     protected function __construct(
-        float $damage,
-        float $health,
-        float $numberCriticalShot,
-        float $dodging,
-        float $dynamicProtection,
-        float $rechargeStatus,
-        float $timeRecharge)
+        Armor $armor,
+        Chassis $chassis,
+        Towers $towers,
+        int $health)
     {
-        $this->damage = $damage;
-        $this->health = $health;
-        $this->numberCriticalShot = $numberCriticalShot;
-        $this->dodging = $dodging;
-        $this->dynamicProtection = $dynamicProtection;
-        $this->rechargeStatus = $rechargeStatus;
-        $this->timeRecharge = $timeRecharge;
+        $this->armor = $armor;
+        $this->chassis = $chassis;
+        $this->towers = $towers;
+        $this->health  = $health;
     }
 
     public function toString(): string
     {
-        return "Урон: {$this->damage}\nЗдоровье: {$this->health}\n\n";
-    }
-
-    public function processRecharge(): float
-    {
-        if($this->rechargeStatus > 0){
-            $this->rechargeStatus = $this->rechargeStatus - 1;
-        }
-        return $this->rechargeStatus;
-    }
-
-    public function getDamageWithRandom(): float
-    {
-        if(rand(1, 10) == $this->numberCriticalShot) {
-            return 100;
-        } else {
-            return $this->damage;
-        }
-    }
-
-    public function getChanceDodge(): bool
-    {
-        if(rand(1, 10) == $this->dodging) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public function getDynamicProtection(): bool
-    {
-        if(rand(1, 10) == $this->dynamicProtection) {
-            return true;
-        } else {
-            return false;
-        }
+        return "Здоровье: {$this->health}\n
+                Броня: {$this->armor->toString()}\n
+                Шасси: {$this->chassis->toString()}\n
+                Башня: {$this->towers->toString()}\n\n";
     }
 }

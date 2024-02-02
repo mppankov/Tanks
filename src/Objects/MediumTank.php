@@ -2,10 +2,14 @@
 
 namespace mppankov\tanks\Objects;
 
+use mppankov\tanks\Components\Armor\MediumArmor;
+use mppankov\tanks\Components\Chassis\MediumChassis;
+use mppankov\tanks\Components\Towers\MediumTowers;
+
 class MediumTank extends Tank
 {
     public function __construct()
     {
-        parent::__construct(rand(21, 30), 100, rand(1, 10), rand(1, 10), rand(1, 10), 0, 2);
+        parent::__construct(new MediumArmor(), new MediumChassis(), new MediumTowers(), 100);
     }  
 }
