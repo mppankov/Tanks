@@ -2,10 +2,9 @@
 
 namespace Tanks\Factory;
 
-use Tanks\TanksComponents\Armor\HeavyArmor;
-use Tanks\TanksComponents\Armor\MediumArmor;
-use Tanks\TanksComponents\Armor\LiteArmor;
-
+use Tanks\Tanks\TanksComponents\Armor\HeavyArmor;
+use Tanks\Tanks\TanksComponents\Armor\LiteArmor;
+use Tanks\Tanks\TanksComponents\Armor\MediumArmor;
 
 
 class ArmorFactory

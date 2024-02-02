@@ -1,9 +1,8 @@
 <?php
 
-namespace Tanks\TanksComponents\Towers;
+namespace Tanks\Tanks\TanksComponents\Towers;
 
-use Tanks\TanksComponents\Guns\Guns;
-use Tanks\TanksComponents\Guns\HeavyGuns;
+use Tanks\Tanks\TanksComponents\Guns\HeavyGuns;
 
 class HeavyTowers extends Towers
 {

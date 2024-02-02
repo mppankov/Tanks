@@ -1,6 +1,6 @@
 <?php
 
-namespace Tanks\TanksComponents\Armor;
+namespace Tanks\Tanks\TanksComponents\Armor;
 
 class Armor
 {
@@ -13,6 +13,6 @@ class Armor
 
     public function toString(): string
     {
-        return "Защита: {$this->armor}\n\n";
+        return "Защита - {$this->armor}";
     }
 }

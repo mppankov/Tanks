@@ -3,6 +3,8 @@
 namespace Tanks\Game;
 
 
+use Tanks\Tanks\TanksComponents\Guns;
+use Tanks\Tanks\Tank;
 use Tanks\Tanks\Team;
 use Tanks\Factory\TankFactory;
 
@@ -28,32 +30,61 @@ class Game
         $this->nameB = $nameB;
     }
 
+    public function chanceDodge(Tank $tank): bool
+    {
+        $speed = $tank->chassis->speed;
+        $rand = rand(0, 100);
+
+        if($speed > $rand){
+            return true;
+        }
+        return false;
+    }
+
+    public function chanceCriticalShot(Tank $tank): float
+    {
+        $damage = $tank->towers->guns->power;
+        $rand = rand(0,100);
+
+        if($damage > $rand){
+            return true;
+        }
+        return false;
+    }
+
     private function attack($attacker, $defender): void
     {
-        $damageRandom = $attacker->getDamageWithRandom();
-        $chanceDodge = $defender->getChanceDodge();
-        $dynamicProtection = $defender->getDynamicProtection();
 
-        if($chanceDodge === true) {
+        if($attacker->towers->turningSpeed * rand(1, 2) < $defender->towers->turningSpeed){
+            var_dump("Не успел выстрелить!");
+        } elseif ($this->chanceDodge($defender)){
             var_dump("Танк увернулся!");
-            $attacker->rechargeStatus = $attacker->timeRecharge;
-       // } elseif($dynamicProtection === true && $damageRandom < 30) {
-            var_dump("Отработала динамическая защита!");
-            $attacker->rechargeStatus = $attacker->timeRecharge;
-        } elseif($defender->health > 0 && $defender->health > $damageRandom) {
-         //   var_dump("Попадание!");
-            $defender->health = $defender->health - $damageRandom;
-            $attacker->rechargeStatus = $attacker->timeRecharge;
-        } else {
-           // var_dump("Критическое попадание!");
-            $defender->health = 0;
-            $attacker->rechargeStatus = $attacker->timeRecharge;
-        }
-        var_dump("Урон: {$damageRandom}\n");
-        if ($defender->health == 0){
-            var_dump("Танк уничтожен!");
-        } else {
-            var_dump("Остаток жизней: {$defender->health}");
+            $attacker->towers->guns->rechargeNominal = $attacker->tower->guns->rechargeRate;
+        } elseif ($attacker->towers->guns->penetration < $defender->armor){
+            var_dump("Не пробил!");
+            $attacker->towers->guns->rechargeNominal = $attacker->tower->guns->rechargeRate;
+        } elseif ($this->chanceCriticalShot($attacker) && $attacker->towers->guns->power > $defender->health){
+            var_dump("Критическое попадание!");
+            $defender->health = $defender->health - $attacker->towers->guns->power * rand(2, 4);
+            var_dump("Урон: {$attacker->towers->guns->power}");
+            $attacker->towers->guns->rechargeNominal = $attacker->tower->guns->rechargeRate;
+                if($defender->health < 0){
+                    $defender->health = 0;
+                    var_dump("Танк уничтожен!");
+                } else {
+                    var_dump("Остаток жизней: $defender->health");
+                }
+        } elseif ($attacker->towers->guns->penetration > $defender->armor){
+            var_dump("Попадание!");
+            var_dump("Урон: {$attacker->towers->guns->power}");
+            $defender->health = $defender->health - $attacker->towers->guns->power;
+            $attacker->towers->guns->rechargeNominal = $attacker->tower->guns->rechargeRate;
+                if($defender->health < 0){
+                    $defender->health = 0;
+                    var_dump("Танк уничтожен!");
+                } else {
+                    var_dump("Остаток жизней: $defender->health");
+                }
         }
     }
 

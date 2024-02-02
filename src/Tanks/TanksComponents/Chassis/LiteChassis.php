@@ -1,6 +1,6 @@
 <?php
 
-namespace Tanks\TanksComponents\Chassis;
+namespace Tanks\Tanks\TanksComponents\Chassis;
 
 class LiteChassis extends Chassis
 {

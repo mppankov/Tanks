@@ -1,6 +1,6 @@
 <?php
 
-namespace Tanks\TanksComponents\Armor;
+namespace Tanks\Tanks\TanksComponents\Armor;
 
 class MediumArmor extends Armor
 {

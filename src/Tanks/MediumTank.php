@@ -2,9 +2,9 @@
 
 namespace Tanks\Tanks;
 
-use Tanks\TanksComponents\Armor\MediumArmor;
-use Tanks\TanksComponents\Chassis\MediumChassis;
-use Tanks\TanksComponents\Towers\MediumTowers;
+use Tanks\Tanks\TanksComponents\Armor\MediumArmor;
+use Tanks\Tanks\TanksComponents\Chassis\MediumChassis;
+use Tanks\Tanks\TanksComponents\Towers\MediumTowers;
 
 class MediumTank extends Tank
 {

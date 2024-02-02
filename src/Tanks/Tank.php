@@ -2,9 +2,9 @@
 
 namespace Tanks\Tanks;
 
-use Tanks\TanksComponents\Armor\Armor;
-use Tanks\TanksComponents\Chassis\Chassis;
-use Tanks\TanksComponents\Towers\Towers;
+use Tanks\Tanks\TanksComponents\Armor\Armor;
+use Tanks\Tanks\TanksComponents\Chassis\Chassis;
+use Tanks\Tanks\TanksComponents\Towers\Towers;
 
 class Tank
 {
@@ -27,9 +27,7 @@ class Tank
 
     public function toString(): string
     {
-        return "Здоровье: {$this->health}\n
-                Броня: {$this->armor->toString()}\n
-                Шасси: {$this->chassis->toString()}\n
-                Башня: {$this->towers->toString()}\n\n";
+        return "Здоровье: {$this->health}\n\nБроня:\n{$this->armor->toString()}\n\nШасси:\n{$this->chassis->toString()}\n\nБашня:\n{$this->towers->toString()}\n\n";
+
     }
 }

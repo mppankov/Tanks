@@ -1,9 +1,8 @@
 <?php
 
-namespace Tanks\TanksComponents\Towers;
+namespace Tanks\Tanks\TanksComponents\Towers;
 
-use Tanks\TanksComponents\Guns\Guns;
-use Tanks\TanksComponents\Guns\HeavyGuns;
+use Tanks\Tanks\TanksComponents\Guns\Guns;
 
 class Towers
 {
@@ -20,8 +19,7 @@ class Towers
 
      public function toString(): string
      {
-         return "Пушка: {$this->guns->toString()}\n
-                 Прочность: {$this->endurance}\n
-                 Скорость поворота: {$this->turningSpeed}\n\n";
+         return
+             "Прочность - {$this->endurance}\nСкорость поворота - {$this->turningSpeed}\n\nПушка:\n{$this->guns->toString()}\n";
      }
 }

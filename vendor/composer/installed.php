@@ -3,7 +3,7 @@
         'name' => 'mppankov/tanks',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '9f72c9e9b0325a91b8c1e5fe11c5c346941d3640',
+        'reference' => '0f1e4199f018ecdc2cf235163bdc61c1294f3636',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -40,7 +40,7 @@
         'mppankov/tanks' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '9f72c9e9b0325a91b8c1e5fe11c5c346941d3640',
+            'reference' => '0f1e4199f018ecdc2cf235163bdc61c1294f3636',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -142,14 +142,12 @@
             'dev_requirement' => true,
         ),
         'phpunit/phpunit' => array(
-            'pretty_version' => 'dev-main',
-            'version' => 'dev-main',
-            'reference' => 'ece3536c22fc5113906a42e7e82de00baaef36d0',
+            'pretty_version' => '11.0.x-dev',
+            'version' => '11.0.9999999.9999999-dev',
+            'reference' => '0c5426084ff0a19d7a81fb6478d7305b6e1ce0c3',
             'type' => 'library',
             'install_path' => __DIR__ . '/../phpunit/phpunit',
-            'aliases' => array(
-                0 => '11.0.x-dev',
-            ),
+            'aliases' => array(),
             'dev_requirement' => true,
         ),
         'psr/http-client' => array(

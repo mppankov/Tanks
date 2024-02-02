@@ -2,9 +2,9 @@
 
 namespace Tanks\Tanks;
 
-use Tanks\TanksComponents\Armor\LiteArmor;
-use Tanks\TanksComponents\Chassis\LiteChassis;
-use Tanks\TanksComponents\Towers\LiteTowers;
+use Tanks\Tanks\TanksComponents\Armor\LiteArmor;
+use Tanks\Tanks\TanksComponents\Chassis\LiteChassis;
+use Tanks\Tanks\TanksComponents\Towers\LiteTowers;
 
 class LiteTank extends Tank
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Tanks\TanksComponents\Chassis;
+namespace Tanks\Tanks\TanksComponents\Chassis;
 
 class Chassis
 {
@@ -13,6 +13,6 @@ class Chassis
 
     public function toString(): string
     {
-        return "Скорость: {$this->speed}\n\n";
+        return "Скорость - {$this->speed}";
     }
 }

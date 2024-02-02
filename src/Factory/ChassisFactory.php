@@ -2,9 +2,9 @@
 
 namespace Tanks\Factory;
 
-use Tanks\TanksComponents\Chassis\HeavyChassis;
-use Tanks\TanksComponents\Chassis\MediumChassis;
-use Tanks\TanksComponents\Chassis\LiteChassis;
+use Tanks\Tanks\TanksComponents\Chassis\HeavyChassis;
+use Tanks\Tanks\TanksComponents\Chassis\MediumChassis;
+use Tanks\Tanks\TanksComponents\Chassis\LiteChassis;
 
 
 
