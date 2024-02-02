@@ -1,6 +1,6 @@
 <?php
 
-namespace mppankov\tanks\Components\Guns;
+namespace Tanks\TanksComponents\Guns;
 
 class LiteGuns extends Guns
 {

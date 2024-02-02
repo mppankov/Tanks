@@ -1,10 +1,10 @@
 <?php
 
-namespace mppankov\tanks\Objects;
+namespace Tanks\Tanks;
 
-use mppankov\tanks\Components\Armor\Armor;
-use mppankov\tanks\Components\Chassis\Chassis;
-use mppankov\tanks\Components\Towers\Towers;
+use Tanks\TanksComponents\Armor\Armor;
+use Tanks\TanksComponents\Chassis\Chassis;
+use Tanks\TanksComponents\Towers\Towers;
 
 class Tank
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace mppankov\tanks\Components\Armor;
+namespace Tanks\TanksComponents\Armor;
 
 class HeavyArmor extends Armor
 {

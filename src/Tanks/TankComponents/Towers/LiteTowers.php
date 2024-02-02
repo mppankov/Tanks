@@ -1,8 +1,8 @@
 <?php
 
-namespace mppankov\tanks\Components\Towers;
+namespace Tanks\TanksComponents\Towers;
 
-use mppankov\tanks\Components\Guns\LiteGuns;
+use Tanks\TanksComponents\Guns\LiteGuns;
 
 class LiteTowers extends Towers
 {

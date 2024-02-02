@@ -1,10 +1,10 @@
 <?php
 
-namespace mppankov\tanks\Factory;
+namespace Tanks\Factory;
 
-use mppankov\tanks\Components\Armor\HeavyArmor;
-use mppankov\tanks\Components\Armor\MediumArmor;
-use mppankov\tanks\Components\Armor\LiteArmor;
+use Tanks\TanksComponents\Armor\HeavyArmor;
+use Tanks\TanksComponents\Armor\MediumArmor;
+use Tanks\TanksComponents\Armor\LiteArmor;
 
 
 

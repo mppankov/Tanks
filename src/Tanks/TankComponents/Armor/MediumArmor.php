@@ -1,8 +1,8 @@
 <?php
 
-namespace mppankov\tanks\Components\Chassis;
+namespace Tanks\TanksComponents\Armor;
 
-class MediumChassis extends Chassis
+class MediumArmor extends Armor
 {
     public function __construct()
     {

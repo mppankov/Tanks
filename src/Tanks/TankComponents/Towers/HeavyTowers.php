@@ -1,9 +1,9 @@
 <?php
 
-namespace mppankov\tanks\Components\Towers;
+namespace Tanks\TanksComponents\Towers;
 
-use mppankov\tanks\Components\Guns\Guns;
-use mppankov\tanks\Components\Guns\HeavyGuns;
+use Tanks\TanksComponents\Guns\Guns;
+use Tanks\TanksComponents\Guns\HeavyGuns;
 
 class HeavyTowers extends Towers
 {

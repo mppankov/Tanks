@@ -1,10 +1,10 @@
 <?php
 
-namespace mppankov\tanks\Factory;
+namespace Tanks\Factory;
 
-use mppankov\tanks\Components\Towers\HeavyTowers;
-use mppankov\tanks\Components\Towers\mediumTowers;
-use mppankov\tanks\Components\Towers\LiteTowers;
+use Tanks\TanksComponents\Towers\HeavyTowers;
+use Tanks\TanksComponents\Towers\mediumTowers;
+use Tanks\TanksComponents\Towers\LiteTowers;
 
 
 

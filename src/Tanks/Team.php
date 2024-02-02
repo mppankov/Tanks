@@ -1,6 +1,6 @@
 <?php
 
-namespace mppankov\tanks\Objects;
+namespace Tanks\Tanks;
 
 class Team
 {

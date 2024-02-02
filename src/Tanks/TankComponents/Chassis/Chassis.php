@@ -1,6 +1,6 @@
 <?php
 
-namespace mppankov\tanks\Components\Chassis;
+namespace Tanks\TanksComponents\Chassis;
 
 class Chassis
 {
