@@ -3,7 +3,7 @@
 namespace Tanks\Factory;
 
 use Tanks\Tanks\TanksComponents\Towers\HeavyTowers;
-use Tanks\Tanks\TanksComponents\Towers\mediumTowers;
+use Tanks\Tanks\TanksComponents\Towers\MediumTowers;
 use Tanks\Tanks\TanksComponents\Towers\LiteTowers;
 
 

@@ -22,4 +22,14 @@ class Guns
     {
         return "Мощность - {$this->power}\nПробиваемость - {$this->penetration}\nСкорость перезарядки - {$this->rechargeRate}\nСтатус перезарядки - {$this->rechargeNominal}";
     }
+
+    public function recharge(): void
+    {
+        $this->rechargeNominal = $this->rechargeRate;
+    }
+
+    public function charging(): void
+    {
+        $this->rechargeNominal = $this->rechargeNominal - 1;
+    }
 }

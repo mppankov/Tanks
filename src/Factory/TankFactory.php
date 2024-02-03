@@ -20,13 +20,19 @@ class TankFactory
 
         for ($i = 0; $i < $count; $i++)  
         {
+
         $random = rand(0, 90);
             
             if ($random < 30) {
+
                 $tanks[] = new HeavyTank();
+
             } elseif ($random < 60) {
+
                 $tanks[] = new MediumTank();
+
             } else {
+
                 $tanks[] = new LiteTank();   
             }  
         }

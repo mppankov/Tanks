@@ -24,15 +24,21 @@ class Team
         foreach ($this->tanks as $i => $tank)
         {
             if ($tank instanceof HeavyTank){
+
                 $specification .= $i + 1 . " Тяжелый танк:\n\n{$tank->toString()}";
+
             } elseif ($tank instanceof MediumTank){
+
                 $specification .= $i + 1 . " Средний танк:\n\n{$tank->toString()}";
+
             } elseif ($tank instanceof LiteTank){
+
                 $specification .= $i + 1 . " Легкий танк:\n\n{$tank->toString()}";
             }
         }
         return $specification;
     }
+
     public function getRandAliveTank(): ? Tank
     {
         $aliveTank = [];
@@ -73,11 +79,23 @@ class Team
         return null;
     }
 
+    public function chargingTeam(): void
+    {
+        foreach ($this->tanks as $tank) {
+
+            if ($tank->towers->guns->rechargeNominal > 0) {
+
+                $tank->towers->guns->charging();
+            }
+        }
+    }
+
     public function isTeamAlive(): bool
     {
         foreach ($this->tanks as $tank)
         {
             if ($tank->health > 0){
+
                 return true;
             }
         }

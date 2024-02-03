@@ -28,6 +28,5 @@ class Tank
     public function toString(): string
     {
         return "Здоровье: {$this->health}\n\nБроня:\n{$this->armor->toString()}\n\nШасси:\n{$this->chassis->toString()}\n\nБашня:\n{$this->towers->toString()}\n\n";
-
     }
 }
