@@ -17,16 +17,19 @@ class ChassisFactory
     public function creatLiteChassis(): LiteChassis
     {
         $chassis = new LiteChassis();
+        $chassis->speed = rand(28, 32);
         return $chassis;
     }
     public function creatHeavyChassis(): HeavyChassis
     {
         $chassis = new HeavyChassis();
+        $chassis->speed = rand(8, 12);
         return $chassis;
     }
-    public function creatMediumGuns(): MediumChassis
+    public function creatMediumChassis(): MediumChassis
     {
-        $guns = new MediumChassis();
-        return $guns;
+        $chassis = new MediumChassis();
+        $chassis->speed = rand(18, 22);
+        return $chassis;
     }
 }

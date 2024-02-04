@@ -2,7 +2,6 @@
 
 namespace Tanks\Factory;
 
-
 use Tanks\Tanks\HeavyTank;
 use Tanks\Tanks\MediumTank;
 use Tanks\Tanks\LiteTank;
@@ -14,6 +13,7 @@ class TankFactory
     public function __construct()
     {
     }
+
     public function creatTanks(int $count): array
     {
         $tanks = [];

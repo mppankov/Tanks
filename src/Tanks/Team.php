@@ -2,6 +2,11 @@
 
 namespace Tanks\Tanks;
 
+use Tanks\Tanks\Crew\Commander;
+use Tanks\Tanks\Crew\Gunner;
+use Tanks\Tanks\Crew\Helmsman;
+use Tanks\Tanks\Crew\Mechanics;
+
 class Team
 {
     public array $tanks;
