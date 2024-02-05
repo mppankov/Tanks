@@ -29,7 +29,7 @@ class TowersFactory
         $towers = new MediumTowers();
         $guns = new GunsFactory();
         $towers->guns = $guns->creatMediumGuns();
-        $towers->endurance = rand(8, 12);
+        $towers->endurance = rand(18, 22);
         $towers->turningSpeed = rand(13, 17);
         return $towers;
     }

@@ -6,8 +6,6 @@ use Tanks\Tanks\TanksComponents\Chassis\HeavyChassis;
 use Tanks\Tanks\TanksComponents\Chassis\MediumChassis;
 use Tanks\Tanks\TanksComponents\Chassis\LiteChassis;
 
-
-
 class ChassisFactory
 {
     public function __construct()

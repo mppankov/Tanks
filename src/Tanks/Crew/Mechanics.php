@@ -8,5 +8,4 @@ class Mechanics extends Human
     {
         parent::__construct(100, 50, 0);
     }
-
 }

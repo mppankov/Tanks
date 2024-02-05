@@ -8,6 +8,6 @@ class LiteTowers extends Towers
 {
     public function __construct()
     {
-        parent::__construct(new LiteGuns(), 15, 20  );
+        parent::__construct(new LiteGuns(), 10, 20  );
     }
 }

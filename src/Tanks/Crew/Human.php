@@ -16,7 +16,7 @@ class Human
 
     public function toString(): string
     {
-        return "Здоровье - {$this->health}\nНавык - {$this->skill}";
+        return "Здоровье - {$this->health}\nНавык - {$this->skill}\nОглушение - {$this->stunning}";
     }
 
     public function stunning(): void

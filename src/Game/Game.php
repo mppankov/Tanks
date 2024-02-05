@@ -2,8 +2,8 @@
 
 namespace Tanks\Game;
 
-use Tanks\Tanks\Team;
 use Tanks\Factory\TankFactory;
+use Tanks\Tanks\Team;
 
 
 class Game
@@ -30,10 +30,10 @@ class Game
     private function attack($attacker, $defender): void
     {
         $shot = $attacker->towers->guns->power;
-        $randCriticalShot = $attacker->towers->guns->power >= rand(1, 100);
+        $randCriticalShot = $attacker->crew["helmsman"]->skill >= rand(1, 100);
         $randShot = $attacker->towers->guns->power * rand(2, 3);
         $randCriticalPenetration = $attacker->towers->guns->penetration >= rand(1, 60);
-        $gunnerSpeed = $attacker->towers->turningSpeed >= rand(1, 40);
+        $gunnerSpeed = $attacker->crew["gunner"]->skill >= rand(1, 100);
         $steeringSpeed = $defender->chassis->speed >= rand(1, 200);
 
         if ($steeringSpeed) {
@@ -93,8 +93,8 @@ class Game
         echo "Раунд между командами: " . $teamA->name . " и " . $teamB->name . "\n\n";
 
         do {
-            $teamA->chargingTeam();
-            $teamB->chargingTeam();
+            $teamA->chargingTanks();
+            $teamB->chargingTanks();
             $tankAttackA = $teamA->getRandomReadyTank();
             $tankAttackB = $teamB->getRandomReadyTank();
             $tankAttackedA = $teamA->getRandAliveTank();
@@ -115,11 +115,12 @@ class Game
             }
             echo "\n\n";
 
-        } while ($teamA->isTeamAlive() && $teamB->isTeamAlive());
+        } while ($teamA->isTanksAlive() && $teamB->isTanksAlive());
         
-        if (!$teamA->isTeamAlive() && !$teamB->isTeamAlive()) {
-            echo "Ничья";
-        } elseif ($teamA->isTeamAlive()){
+        if ((!$teamA->isTanksAlive() || !$teamA->isCrewAlive()) &&
+            (!$teamB->isTanksAlive() || !$teamB->isCrewAlive())) {
+            echo "Ничья\n\n";
+        } elseif ($teamA->isTanksAlive()){
             echo "Команда: {$teamA->name} победила!\n\n";
         } else {
             echo "Команда: {$teamB->name} победила!\n\n";

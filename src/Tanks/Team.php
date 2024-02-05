@@ -2,11 +2,6 @@
 
 namespace Tanks\Tanks;
 
-use Tanks\Tanks\Crew\Commander;
-use Tanks\Tanks\Crew\Gunner;
-use Tanks\Tanks\Crew\Helmsman;
-use Tanks\Tanks\Crew\Mechanics;
-
 class Team
 {
     public array $tanks;
@@ -21,7 +16,6 @@ class Team
     {
         return "Название команды: {$this->name}\n";
     }
-
     public function getTypeTank(): string
     {
         $specification = [];
@@ -84,7 +78,7 @@ class Team
         return null;
     }
 
-    public function chargingTeam(): void
+    public function chargingTanks(): void
     {
         foreach ($this->tanks as $tank) {
 
@@ -95,7 +89,22 @@ class Team
         }
     }
 
-    public function isTeamAlive(): bool
+    public function isCrewAlive(): bool
+    {
+        foreach ($this->tanks as $tank)
+        {
+            foreach ($tank as $crew) {
+                $health = $crew["commander"];
+
+                if ($health > 0) {
+
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    public function isTanksAlive(): bool
     {
         foreach ($this->tanks as $tank)
         {

@@ -8,5 +8,4 @@ class Helmsman extends Human
     {
         parent::__construct(100, 50, 0);
     }
-
 }

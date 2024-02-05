@@ -8,6 +8,6 @@ class MediumTowers extends Towers
 {
     public function __construct()
     {
-        parent::__construct(new MediumGuns(), 10, 15);
+        parent::__construct(new MediumGuns(), 20, 15);
     }
 }

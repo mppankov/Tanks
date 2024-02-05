@@ -4,21 +4,22 @@ namespace Tanks\Tanks;
 
 use Tanks\Factory\ArmorFactory;
 use Tanks\Factory\ChassisFactory;
+use Tanks\Factory\CrewFactory;
 use Tanks\Factory\TowersFactory;
-use Tanks\Tanks\TanksComponents\Armor\LiteArmor;
-use Tanks\Tanks\TanksComponents\Chassis\LiteChassis;
-use Tanks\Tanks\TanksComponents\Towers\LiteTowers;
 
 class LiteTank extends Tank
 {
     public function __construct()
     {
-        parent::__construct(new LiteArmor(), new LiteChassis(), new LiteTowers(), 100);
+        $crew = new CrewFactory();
         $armor = new ArmorFactory();
         $chassis = new ChassisFactory();
         $towers = new TowersFactory();
-        $this->armor = $armor->creatLiteArmor();
-        $this->chassis = $chassis->creatLiteChassis();
-        $this->towers = $towers->creatLiteTowers();
+
+        parent::__construct($crew->creatCrew(),
+            $armor->creatLiteArmor(),
+            $chassis->creatLiteChassis(),
+            $towers->creatLiteTowers(),
+            100);
     }
 }

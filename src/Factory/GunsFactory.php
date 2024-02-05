@@ -31,7 +31,7 @@ class GunsFactory
     {
         $guns = new MediumGuns();
         $guns->power = rand(23, 27);
-        $guns->penetration = rand(33, 37);
+        $guns->penetration = rand(23, 27);
         return $guns;
     }
 }
