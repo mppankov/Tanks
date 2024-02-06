@@ -2,10 +2,7 @@
 
 namespace Tanks\Factory;
 
-use Tanks\Tanks\Crew\Commander;
-use Tanks\Tanks\Crew\Gunner;
-use Tanks\Tanks\Crew\Helmsman;
-use Tanks\Tanks\Crew\Mechanics;
+use Tanks\Tanks\Crew\Human;
 
 class CrewFactory
 {
@@ -13,12 +10,12 @@ class CrewFactory
     {
     }
 
-    public function creatCrew(): array
+    public function createCrew(): array
     {
-        return array(
-        "commander" => new Commander(),
-        "gunner" => new Gunner(),
-        "helmsman" => new Helmsman(),
-        "mechanics" => new Mechanics(),);
+        return  [
+            new Human(Human::COMMANDER, 100, 50, 0),
+            new Human(Human::GUNNER, 100, 50, 0),
+            new Human(Human::HELMSMAN, 100, 50, 0),
+            new Human(Human::MECHANICS, 100, 50, 0)];
     }
 }

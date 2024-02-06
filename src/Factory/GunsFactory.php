@@ -2,9 +2,9 @@
 
 namespace Tanks\Factory;
 
-use Tanks\Tanks\TanksComponents\Guns\HeavyGuns;
-use Tanks\Tanks\TanksComponents\Guns\LiteGuns;
-use Tanks\Tanks\TanksComponents\Guns\MediumGuns;
+use Tanks\Tanks\TanksComponents\Guns\HeavyGun;
+use Tanks\Tanks\TanksComponents\Guns\LiteGun;
+use Tanks\Tanks\TanksComponents\Guns\MediumGun;
 
 
 class GunsFactory
@@ -13,25 +13,16 @@ class GunsFactory
     {
     }
 
-    public function creatLiteGuns(): LiteGuns
+    public function createLiteGun(): LiteGun
     {
-        $guns = new LiteGuns();
-        $guns->power = rand(13, 17);
-        $guns->penetration = rand(18, 22);
-        return $guns;
+        return new LiteGun(rand(13, 17), rand(18, 22));
     }
-    public function creatHeavyGuns(): HeavyGuns
+    public function createHeavyGun(): HeavyGun
     {
-        $guns = new HeavyGuns();
-        $guns->power = rand(28, 32);
-        $guns->penetration = rand(28, 32);
-        return $guns;
+        return new HeavyGun( rand(28, 32), rand(28, 32));
     }
-    public function creatMediumGuns(): MediumGuns
+    public function createMediumGun(): MediumGun
     {
-        $guns = new MediumGuns();
-        $guns->power = rand(23, 27);
-        $guns->penetration = rand(23, 27);
-        return $guns;
+        return new MediumGun( rand(23, 27), rand(23, 27));
     }
 }

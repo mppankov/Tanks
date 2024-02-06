@@ -13,23 +13,17 @@ class ArmorFactory
     {
     }
 
-    public function creatLiteArmor(): LiteArmor
+    public function createLiteArmor(): LiteArmor
     {
-        $armor = new LiteArmor();
-        $armor->armor = rand(8, 12);
-        return $armor;
+        return new LiteArmor(rand(8, 12));
     }
-    public function creatHeavyArmor(): HeavyArmor
+    public function createHeavyArmor(): HeavyArmor
     {
-        $armor = new HeavyArmor();
-        $armor->armor = rand(28, 32);
-        return $armor;
+       return new HeavyArmor(rand(28, 32));
     }
-    public function creatMediumArmor(): MediumArmor
+    public function createMediumArmor(): MediumArmor
     {
-        $armor = new MediumArmor();
-        $armor->armor = rand(18, 22);
-        return $armor;
+        return new MediumArmor(rand(18, 22));
     }
 }
 

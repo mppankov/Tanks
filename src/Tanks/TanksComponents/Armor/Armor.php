@@ -2,11 +2,11 @@
 
 namespace Tanks\Tanks\TanksComponents\Armor;
 
-class Armor
+abstract class Armor
 {
     public int $armor;
 
-    public function __construct(int $armor)
+    public function __construct(int $armor = 10)
     {
         $this->armor = $armor;
     }

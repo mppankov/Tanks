@@ -2,44 +2,28 @@
 
 namespace Tanks\Factory;
 
-
-use Tanks\Tanks\TanksComponents\Towers\HeavyTowers;
-use Tanks\Tanks\TanksComponents\Towers\MediumTowers;
-use Tanks\Tanks\TanksComponents\Towers\LiteTowers;
-
-
+use Tanks\Tanks\TanksComponents\Towers\HeavyTower;
+use Tanks\Tanks\TanksComponents\Towers\MediumTower;
+use Tanks\Tanks\TanksComponents\Towers\LiteTower;
 
 class TowersFactory
 {
     public function __construct()
     {
     }
-
-    public function creatLiteTowers(): LiteTowers
+    public function createLiteTower(): LiteTower
     {
-        $towers = new LiteTowers();
-        $guns = new GunsFactory();
-        $towers->guns = $guns->creatLiteGuns();
-        $towers->endurance = rand(13, 17);
-        $towers->turningSpeed = rand(18, 22);
-        return $towers;
+        $gun = new GunsFactory();
+        return new LiteTower($gun->createLiteGun(), rand(13, 17), rand(18, 22));
     }
-    public function creatMediumTowers(): MediumTowers
+    public function createMediumTower(): MediumTower
     {
-        $towers = new MediumTowers();
-        $guns = new GunsFactory();
-        $towers->guns = $guns->creatMediumGuns();
-        $towers->endurance = rand(18, 22);
-        $towers->turningSpeed = rand(13, 17);
-        return $towers;
+        $gun = new GunsFactory();
+        return new MediumTower($gun->createMediumGun(), rand(18, 22), rand(13, 17));
     }
-    public function creatHeavyTowers(): HeavyTowers
+    public function createHeavyTower(): HeavyTower
     {
-        $towers = new HeavyTowers();
-        $guns = new GunsFactory();
-        $towers->guns = $guns->creatHeavyGuns();
-        $towers->endurance = rand(28, 32);
-        $towers->turningSpeed = rand(8, 12);
-        return $towers;
+        $gun = new GunsFactory();
+        return new HeavyTower($gun->createHeavyGun(), rand(28, 32), rand(8, 12));
     }
 }

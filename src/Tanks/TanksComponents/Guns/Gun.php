@@ -2,15 +2,14 @@
 
 namespace Tanks\Tanks\TanksComponents\Guns;
 
-class Guns
+abstract class Gun
 {
     public int $power;
     public int $penetration;
-
     public int $rechargeRate;
     public int $rechargeNominal;
 
-    public function __construct(int $power, int $penetration, int $rechargeRate, int $rechargeNominal)
+    public function __construct(int $power = 10, int $penetration = 10, int $rechargeRate = 3, int $rechargeNominal = 0)
     {
         $this->power = $power;
         $this->penetration = $penetration;

@@ -2,8 +2,11 @@
 
 namespace Tanks\Tanks;
 
+use Tanks\Tanks\Crew\Human;
+
 class Team
 {
+    /** @var Tank[] */
     public array $tanks;
     public string $name;
 
@@ -64,7 +67,7 @@ class Team
 
         foreach ($this->tanks as $tank)
         {
-            if ($tank->health > 0 && $tank->towers->guns->rechargeNominal == 0) {
+            if ($tank->health > 0 && $tank->towers->guns->rechargeNominal === 0) {
 
                 $readyShotTank[] = $tank;
             }
@@ -91,12 +94,13 @@ class Team
 
     public function isCrewAlive(): bool
     {
+        /** @var Tank $tank */
         foreach ($this->tanks as $tank)
         {
-            foreach ($tank as $crew) {
-                $health = $crew["commander"];
+            /** @var Human $human */
+            foreach ($tank->crew as $human) {
 
-                if ($health > 0) {
+                if ($human->health > 0) {
 
                     return true;
                 }
@@ -108,6 +112,7 @@ class Team
     {
         foreach ($this->tanks as $tank)
         {
+
             if ($tank->health > 0){
 
                 return true;
