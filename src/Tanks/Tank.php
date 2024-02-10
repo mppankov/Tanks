@@ -2,11 +2,7 @@
 
 namespace Tanks\Tanks;
 
-use Tanks\Tanks\Crew\Commander;
-use Tanks\Tanks\Crew\Gunner;
-use Tanks\Tanks\Crew\Helmsman;
 use Tanks\Tanks\Crew\Human;
-use Tanks\Tanks\Crew\Mechanics;
 use Tanks\Tanks\TanksComponents\Armor\Armor;
 use Tanks\Tanks\TanksComponents\Chassis\Chassis;
 use Tanks\Tanks\TanksComponents\Towers\Tower;

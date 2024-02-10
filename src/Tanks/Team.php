@@ -7,6 +7,7 @@ use Tanks\Tanks\Crew\Human;
 class Team
 {
     /** @var Tank[] */
+
     public array $tanks;
     public string $name;
 
@@ -67,7 +68,7 @@ class Team
 
         foreach ($this->tanks as $tank)
         {
-            if ($tank->health > 0 && $tank->towers->guns->rechargeNominal === 0) {
+            if ($tank->health > 0 && $tank->tower->gun->rechargeNominal === 0) {
 
                 $readyShotTank[] = $tank;
             }
@@ -85,19 +86,19 @@ class Team
     {
         foreach ($this->tanks as $tank) {
 
-            if ($tank->towers->guns->rechargeNominal > 0) {
+            if ($tank->tower->gun->rechargeNominal > 0) {
 
-                $tank->towers->guns->charging();
+                $tank->tower->gun->charging();
             }
         }
     }
 
     public function isCrewAlive(): bool
     {
-        /** @var Tank $tank */
         foreach ($this->tanks as $tank)
         {
             /** @var Human $human */
+
             foreach ($tank->crew as $human) {
 
                 if ($human->health > 0) {
@@ -112,12 +113,35 @@ class Team
     {
         foreach ($this->tanks as $tank)
         {
-
             if ($tank->health > 0){
 
                 return true;
             }
         }
         return false;
+    }
+
+    public function getTypeHuman(): ? string
+    {
+        foreach ($this->tanks as $tank) {
+
+            if ($tank->crew === "COMMANDER") {
+
+                return "Коммандир";
+
+            } elseif ($human->type === "GUNNER") {
+
+                return "Заряжающий";
+
+            } elseif ($human->type === "HELMSMAN") {
+
+                return "Наводчик";
+
+            } elseif ($human->type === "MECHANICS") {
+
+                return "Механник";
+            }
+            return null;
+        }
     }
 }   

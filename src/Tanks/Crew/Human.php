@@ -13,7 +13,7 @@ class Human
     public float $health;
     public float $skill;
     public float $stunning;
-    public function __construct(string $type, $health, float $skill, float $stunning)
+    public function __construct(string $type, float $health, float $skill, float $stunning)
     {
         $this->type = $type;
         $this->health = $health;

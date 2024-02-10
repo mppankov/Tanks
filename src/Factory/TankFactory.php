@@ -5,10 +5,10 @@ namespace Tanks\Factory;
 use Tanks\Tanks\HeavyTank;
 use Tanks\Tanks\LiteTank;
 use Tanks\Tanks\MediumTank;
-use Tanks\Tanks\Tank;
 
 class TankFactory
 {
+    private static int $countTanks = 0;
     public function __construct()
     {
     }
@@ -16,7 +16,6 @@ class TankFactory
     public function createTanks(int $count): array
     {
         $tanks = [];
-        $random = rand(0, 90);
 
         $crew = new CrewFactory();
         $armor = new ArmorFactory();
@@ -25,6 +24,8 @@ class TankFactory
 
         for ($i = 0; $i < $count; $i++)  
         {
+            $random = rand(0, 90);
+
             if ($random < 30) {
 
                 $tanks[] = new HeavyTank(
@@ -51,8 +52,14 @@ class TankFactory
                     $chassis->createLiteChassis(),
                     $tower->createLiteTower(),
                     100);
-            }  
+            }
+            self::$countTanks++;
         }
          return $tanks;
-    } 
+    }
+
+    public static function getManyTanksCreated(): int
+    {
+        return self::$countTanks;
+    }
 }

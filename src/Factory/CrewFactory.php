@@ -13,9 +13,9 @@ class CrewFactory
     public function createCrew(): array
     {
         return  [
-            new Human(Human::COMMANDER, 100, 50, 0),
-            new Human(Human::GUNNER, 100, 50, 0),
-            new Human(Human::HELMSMAN, 100, 50, 0),
-            new Human(Human::MECHANICS, 100, 50, 0)];
+            new Human(Human::COMMANDER, 100, rand(40, 60), 0),
+            new Human(Human::GUNNER, 100, rand(40, 60), 0),
+            new Human(Human::HELMSMAN, 100, rand(40, 60), 0),
+            new Human(Human::MECHANICS, 100, rand(40, 60), 0)];
     }
 }
