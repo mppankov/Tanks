@@ -13,71 +13,90 @@ class UtilsAttack
     }
     public function damageCrewWithoutPenetration(): void
     {
-        foreach ($this->tank->crew as $human)
-        {
-            $human->health -= rand(0, 20);
+        foreach ($this->tank->crew as $human) {
+
+            if ($human->health > 0) {
+
+                $human->health -= rand(0, 20);
+
+                $human->stunning();
+            }
+            if($human->health <= 0){
+
+                $human->health = 0;
+            }
         }
+        $this->getTypeHumanAlive();
     }
 
     public function damageCrewWithPenetration(): void
     {
-        foreach ($this->tank->crew as $human)
-        {
-            $human->health -= rand(20, 40);
+        foreach ($this->tank->crew as $human) {
+            if ($human->health > 0) {
+
+                $human->health -= rand(20, 40);
+
+                $human->stunning();
+            }
+            if($human->health <= 0){
+
+                $human->health = 0;
+            }
         }
+        $this->getTypeHumanAlive();
     }
 
     public function damageCrewWithCriticalHit(): void
     {
-        foreach ($this->tank->crew as $human)
-        {
-            $human->health -= rand(40, 100);
+        foreach ($this->tank->crew as $human) {
+
+            if ($human->health > 0) {
+
+                $human->health -= rand(40, 100);
+
+                $human->stunning();
+            }
+            if($human->health <= 0){
+
+                $human->health = 0;
+            }
         }
+            $this->getTypeHumanAlive();
     }
 
-    public function getTypeHumanLife(): string
+    public function getTypeHumanAlive(): void
     {
         foreach ($this->tank->crew as $human) {
 
             if ($human->type === "COMMANDER") {
 
-                if ($human->health <= 0) {
+                if($human->health === 0) {
 
-                    $human->health = 0;
-
-                    return "Коммандир мёртв";
+                    echo "Коммандир мёртв\n";
                 }
 
             } elseif ($human->type === "GUNNER") {
 
-                if ($human->health <= 0) {
+                if($human->health === 0) {
 
-                    $human->health = 0;
-
-                    return "Заряжающий мёртв";
+                    echo "Заряжающий мёртв\n";
                 }
 
             } elseif ($human->type === "HELMSMAN") {
 
-                if ($human->health <= 0) {
+                if($human->health === 0) {
 
-                    $human->health = 0;
-
-                    return "Наводчик мёртв";
+                    echo "Наводчик мёртв\n";
                 }
 
             } elseif ($human->type === "MECHANICS") {
 
-                if ($human->health <= 0) {
+                if($human->health === 0) {
 
-                    $human->health = 0;
-
-                    return "Механник мёртв";
+                    echo "Механник мёртв\n";
                 }
             }
-
         }
-        return "Экипаж жив!";
     }
 
     public function randTankCriticalPenetration(): bool

@@ -59,7 +59,9 @@ class Game
 
             $attacker->tower->gun->recharge();
 
-        } elseif ($attackerTank->randChanceShot()) {
+        } elseif ($attackerGunner->skill <= $defenderGunner &&
+                  $attackerHelmsman->skill <= $defenderHelmsman->skill &&
+                  !$attackerTank->randChanceShot()) {
 
             echo "Не успел выстрелить!\n";
 
@@ -69,9 +71,7 @@ class Game
             echo "Не пробил!\n";
 
             $defenderTank->damageCrewWithoutPenetration();
-
-            $attackerTank->getTypeHumanLife();
-
+            $defender->crewStunning();
             $attacker->tower->gun->recharge();
 
         } elseif (($attacker->tower->turningSpeed <= $defender->tower->turningSpeed &&
@@ -80,41 +80,56 @@ class Game
 
             if ($randTankCriticalPenetration) {
 
-                echo "Критическое попадание!";
-
                 $defender->health -= $randTankShotPower * 2;
+                $defender->crewStunning();
+                $attacker->tower->gun->recharge();
+
+                echo "Критическое попадание!";
+                echo "Урон: " . $randTankShotPower * 2 . "\n";
 
             } else {
 
                 echo "Пробитие!\n";
 
                 $defender->health -= $randTankShotPower;
+                $defender->crewStunning();
+                $attacker->tower->gun->recharge();
             }
 
                 if($randTankShotPower > $attacker->tower->gun->power){
 
+                    echo "Критический урон: {$randTankShotPower}\n";
+
                     $defenderTank->damageCrewWithCriticalHit();
+                    $defender->crewStunning();
+                    $attacker->tower->gun->recharge();
 
                 } else {
 
+                    echo "Урон: {$randTankShotPower}\n";
+
                     $defenderTank->damageCrewWithPenetration();
-
+                    $defender->crewStunning();
+                    $attacker->tower->gun->recharge();
             }
-            echo "Урон: {$randTankShotPower}\n";
-
             $attacker->tower->gun->recharge();
 
-            $attackerTank->getTypeHumanLife();
-
         } else {
+
             echo "Не все условия продуманы!";
         }
+
+
 
         if ($defender->health <= 0) {
 
             $defender->health = 0;
 
             echo "Танк уничтожен!\n";
+
+        } elseif (!$defender->isCrewAlive()) {
+
+            echo "Экипаж убит!";
 
         } else {
 
@@ -127,47 +142,67 @@ class Game
         $tankFactory = new TankFactory();
 
         $teamA = new Team($tankFactory->createTanks($this->count), $this->nameA);
-            echo "Создана команда:\n{$teamA->toString()}\n{$teamA->getTypeTank()}";
+
+            echo "Создана команда:\n{$teamA->toString()}\n{$teamA->getTypeTank()}\n";
+
         $teamB = new Team($tankFactory->createTanks($this->count), $this->nameB);
-            echo "Создана команда:\n{$teamB->toString()}\n{$teamB->getTypeTank()}";
+
+            echo "Создана команда:\n{$teamB->toString()}\n{$teamB->getTypeTank()}\n";
+
             echo "Раунд между командами: " . $teamA->name . " и " . $teamB->name . "\n\n";
 
         do {
             $teamA->chargingTanks();
             $teamB->chargingTanks();
+            $teamA->treatmentCrew();
+            $teamB->treatmentCrew();
             $tankAttackA = $teamA->getRandomReadyTank();
             $tankAttackB = $teamB->getRandomReadyTank();
             $tankAttackedA = $teamA->getRandAliveTank();
             $tankAttackedB = $teamB->getRandAliveTank();
 
             if($tankAttackA) {
+
                 echo "Атакует команда: {$teamA->name}\n";
+
                 $this->attack($tankAttackA, $tankAttackedB);
+
             } else {
-                echo "У команды {$teamA->name} нет заряженных танков!";
+
+                echo "У команды {$teamA->name} нет боеспособных танков!";
             }
+
             echo "\n\n";
+
             if($tankAttackB) {
+
                 echo "Атакует команда: {$teamB->name}\n";
+
             $this->attack($tankAttackB, $tankAttackedA);
+
             } else {
-                echo "У команды {$teamB->name} нет заряженных танков!";
+
+                echo "У команды {$teamB->name} нет боеспособных танков!";
             }
             echo "\n\n";
 
-        } while ($teamA->isTanksAlive() && $teamA->isCrewAlive() &&
-                 $teamB->isTanksAlive() && $teamB->isCrewAlive());
+        } while ($teamA->isTanksAlive() && $teamB->isTanksAlive());
         
-            if ((!$teamA->isTanksAlive() || !$teamA->isCrewAlive()) &&
-                (!$teamB->isTanksAlive() || !$teamB->isCrewAlive())) {
+            if (!$teamA->isTanksAlive() && !$teamB->isTanksAlive()) {
+
                 echo "Ничья\n\n";
+
             } elseif ($teamA->isTanksAlive()){
+
                 echo "Команда: {$teamA->name} победила!\n\n";
+
             } else {
+
                echo "Команда: {$teamB->name} победила!\n\n";
         }
-        echo "Итоги боя :\n\n{$teamA->toString()}{$teamA->getTypeTank()}";
-        echo "Итоги боя :\n\n{$teamB->toString()}{$teamB->getTypeTank()}";
+
+        echo "Итоги боя :\n\n{$teamA->toString()}\n{$teamA->getTypeTank()}\n";
+        echo "Итоги боя :\n\n{$teamB->toString()}\n{$teamB->getTypeTank()}\n";
 
         return 'end';
     }

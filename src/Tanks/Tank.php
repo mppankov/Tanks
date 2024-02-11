@@ -76,4 +76,36 @@ class Tank
         }
         return null;
     }
+
+    public function crewStunning(): void
+    {
+        foreach ($this->crew as $human)
+        {
+            $human->stunning();
+        }
+    }
+
+    public function isStunningCrew(): bool
+    {
+        foreach ($this->crew as $human)
+        {
+            if ($human->stunning === 0) {
+
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public function isCrewAlive(): bool
+    {
+        foreach ($this->crew as $human)
+        {
+            if ($human->health > 0) {
+
+                return true;
+            }
+        }
+        return false;
+    }
 }

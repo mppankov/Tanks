@@ -10,10 +10,10 @@ class Human
     const HELMSMAN = "HELMSMAN";
     const MECHANICS = "MECHANICS";
     public string $type;
-    public float $health;
-    public float $skill;
-    public float $stunning;
-    public function __construct(string $type, float $health, float $skill, float $stunning)
+    public int $health;
+    public int $skill;
+    public int $stunning;
+    public function __construct(string $type, int $health, int $skill, int $stunning)
     {
         $this->type = $type;
         $this->health = $health;
@@ -23,7 +23,7 @@ class Human
 
     public function toString(): string
     {
-        return "Здоровье - {$this->health}\nНавык - {$this->skill}\nОглушение - {$this->stunning}";
+        return "Здоровье - {$this->health}\nНавык - {$this->skill}\nОглушение - {$this->stunning}\n";
     }
 
     public function stunning(): void

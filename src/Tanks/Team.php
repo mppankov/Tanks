@@ -2,8 +2,6 @@
 
 namespace Tanks\Tanks;
 
-use Tanks\Tanks\Crew\Human;
-
 class Team
 {
     /** @var Tank[] */
@@ -48,7 +46,7 @@ class Team
 
         foreach ($this->tanks as $tank)
         {
-            if ($tank->health > 0) {
+            if ($tank->health > 0 && $tank->isCrewAlive()) {
 
                 $aliveTank[] = $tank;
             }
@@ -68,7 +66,8 @@ class Team
 
         foreach ($this->tanks as $tank)
         {
-            if ($tank->health > 0 && $tank->tower->gun->rechargeNominal === 0) {
+            if ($tank->health > 0 && $tank->isCrewAlive() &&
+                $tank->tower->gun->rechargeNominal === 0 && $tank->isStunningCrew()) {
 
                 $readyShotTank[] = $tank;
             }
@@ -93,55 +92,29 @@ class Team
         }
     }
 
-    public function isCrewAlive(): bool
+    public function treatmentCrew(): void
     {
         foreach ($this->tanks as $tank)
         {
-            /** @var Human $human */
-
-            foreach ($tank->crew as $human) {
-
-                if ($human->health > 0) {
-
-                    return true;
+            foreach ($tank->crew as $human)
+            {
+                if($human->stunning > 0)
+                {
+                    $human->treatment();
                 }
             }
         }
-        return false;
     }
+
     public function isTanksAlive(): bool
     {
         foreach ($this->tanks as $tank)
         {
-            if ($tank->health > 0){
+            if ($tank->health > 0 && $tank->isCrewAlive()){
 
                 return true;
             }
         }
         return false;
-    }
-
-    public function getTypeHuman(): ? string
-    {
-        foreach ($this->tanks as $tank) {
-
-            if ($tank->crew === "COMMANDER") {
-
-                return "Коммандир";
-
-            } elseif ($human->type === "GUNNER") {
-
-                return "Заряжающий";
-
-            } elseif ($human->type === "HELMSMAN") {
-
-                return "Наводчик";
-
-            } elseif ($human->type === "MECHANICS") {
-
-                return "Механник";
-            }
-            return null;
-        }
     }
 }   
