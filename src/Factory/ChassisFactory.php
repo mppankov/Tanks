@@ -8,10 +8,6 @@ use Tanks\Tanks\TanksComponents\Chassis\HeavyChassis;
 
 class ChassisFactory
 {
-    public function __construct()
-    {
-    }
-
     public function createLiteChassis(): LiteChassis
     {
         return new LiteChassis(rand(28, 32));

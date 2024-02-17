@@ -20,6 +20,6 @@ abstract class Tower
      public function toString(): string
      {
          return
-             "Прочность - {$this->endurance}\nСкорость поворота - {$this->turningSpeed}\n\nПушка:\n{$this->gun->toString()}\n";
+             " -Прочность - {$this->endurance}\n -Скорость поворота - {$this->turningSpeed}\nПушка:\n{$this->gun->toString()}\n";
      }
 }

@@ -4,7 +4,6 @@ namespace Tanks\Game;
 
 require_once __DIR__ . '/vendor/autoload.php';
 
-
 $game = new Game();
 $game->setManyPlayers(5);
 $game->setTeamA("teamA");

@@ -2,26 +2,38 @@
 
 namespace Tanks\Factory;
 
+
 use Tanks\Tanks\HeavyTank;
 use Tanks\Tanks\LiteTank;
 use Tanks\Tanks\MediumTank;
 
 class TankFactory
 {
-    private static int $countTanks = 0;
-    public function __construct()
+    private int $countTanks = 0;
+    
+    private CrewFactory $crewFactory;
+    private ArmorFactory $armorFactory;
+    private ChassisFactory $chassisFactory;
+    private TowersFactory $towerFactory;
+    
+    
+    public function __construct(
+
+        CrewFactory $crewFactory,
+        ArmorFactory $armorFactory,
+        ChassisFactory $chassisFactory,
+        TowersFactory $towerFactory)
     {
+        $this->crewFactory = $crewFactory;
+        $this->armorFactory = $armorFactory;
+        $this->chassisFactory = $chassisFactory;
+        $this->towerFactory = $towerFactory;
     }
 
     public function createTanks(int $count): array
     {
         $tanks = [];
-
-        $crew = new CrewFactory();
-        $armor = new ArmorFactory();
-        $chassis = new ChassisFactory();
-        $tower = new TowersFactory();
-
+        
         for ($i = 0; $i < $count; $i++)  
         {
             $random = rand(0, 90);
@@ -29,37 +41,37 @@ class TankFactory
             if ($random < 30) {
 
                 $tanks[] = new HeavyTank(
-                    $crew->createCrew(),
-                    $armor->createHeavyArmor(),
-                    $chassis->createHeavyChassis(),
-                    $tower->createHeavyTower(),
+                    $this->crewFactory->createCrew(),
+                    $this->armorFactory->createHeavyArmor(),
+                    $this->chassisFactory->createHeavyChassis(),
+                    $this->towerFactory->createHeavyTower(),
                     100);
 
             } elseif ($random < 60) {
 
                 $tanks[] = new MediumTank(
-                    $crew->createCrew(),
-                    $armor->createMediumArmor(),
-                    $chassis->createMediumChassis(),
-                    $tower->createMediumTower(),
+                    $this->crewFactory->createCrew(),
+                    $this->armorFactory->createMediumArmor(),
+                    $this->chassisFactory->createMediumChassis(),
+                    $this->towerFactory->createMediumTower(),
                     100);
 
             } else {
 
                 $tanks[] = new LiteTank(
-                    $crew->createCrew(),
-                    $armor->createLiteArmor(),
-                    $chassis->createLiteChassis(),
-                    $tower->createLiteTower(),
+                    $this->crewFactory->createCrew(),
+                    $this->armorFactory->createLiteArmor(),
+                    $this->chassisFactory->createLiteChassis(),
+                    $this->towerFactory->createLiteTower(),
                     100);
             }
-            self::$countTanks++;
+            $this->countTanks++;
         }
          return $tanks;
     }
 
-    public static function getManyTanksCreated(): int
+    public function getManyTanksCreated(): int
     {
-        return self::$countTanks;
+        return $this->countTanks;
     }
 }

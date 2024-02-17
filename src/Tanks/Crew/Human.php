@@ -4,7 +4,6 @@ namespace Tanks\Tanks\Crew;
 
 class Human
 {
-
     const COMMANDER = "COMMANDER";
     const GUNNER = "GUNNER";
     const HELMSMAN = "HELMSMAN";
@@ -23,7 +22,7 @@ class Human
 
     public function toString(): string
     {
-        return "Здоровье - {$this->health}\nНавык - {$this->skill}\nОглушение - {$this->stunning}\n";
+        return " -Здоровье - {$this->health}\n -Навык - {$this->skill}\n -Оглушение - {$this->stunning}";
     }
 
     public function stunning(): void
@@ -34,7 +33,8 @@ class Human
     public function treatment(): void
     {
         if($this->stunning > 0){
-            $this->stunning = $this->stunning - 1;
+
+            $this->stunning -= 1;
         }
     }
 }

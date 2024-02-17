@@ -8,26 +8,22 @@ use Tanks\Tanks\TanksComponents\Towers\HeavyTower;
 
 class TowersFactory
 {
-    public function __construct()
+    private GunsFactory $gunsFactory;
+    public function __construct(GunsFactory $gunsFactory)
     {
+        $this->gunsFactory = $gunsFactory;
     }
 
     public function createLiteTower(): LiteTower
     {
-        $gun = new GunsFactory();
-
-        return new LiteTower($gun->createLiteGun(), rand(13, 17), rand(18, 22));
+        return new LiteTower($this->gunsFactory->createLiteGun(), rand(13, 17), rand(18, 22));
     }
     public function createMediumTower(): MediumTower
     {
-        $gun = new GunsFactory();
-
-        return new MediumTower($gun->createMediumGun(), rand(18, 22), rand(13, 17));
+        return new MediumTower($this->gunsFactory->createMediumGun(), rand(18, 22), rand(13, 17));
     }
     public function createHeavyTower(): HeavyTower
     {
-        $gun = new GunsFactory();
-
-        return new HeavyTower($gun->createHeavyGun(), rand(28, 32), rand(8, 12));
+        return new HeavyTower($this->gunsFactory->createHeavyGun(), rand(28, 32), rand(8, 12));
     }
 }

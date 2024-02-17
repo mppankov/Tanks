@@ -8,10 +8,6 @@ use Tanks\Tanks\TanksComponents\Guns\HeavyGun;
 
 class GunsFactory
 {
-    public function __construct()
-    {
-    }
-
     public function createLiteGun(): LiteGun
     {
         return new LiteGun(rand(13, 17), rand(18, 22));

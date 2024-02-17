@@ -6,10 +6,6 @@ use Tanks\Tanks\Crew\Human;
 
 class CrewFactory
 {
-    public function __construct()
-    {
-    }
-
     public function createCrew(): array
     {
         return  [

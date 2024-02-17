@@ -2,6 +2,7 @@
 
 namespace Tanks\Tanks;
 
+use Tanks\Game\GameUtils\UtilsAttack;
 use Tanks\Tanks\Crew\Human;
 use Tanks\Tanks\TanksComponents\Armor\Armor;
 use Tanks\Tanks\TanksComponents\Chassis\Chassis;
@@ -9,6 +10,8 @@ use Tanks\Tanks\TanksComponents\Towers\Tower;
 
 class Tank
 {
+    use UtilsAttack;
+
     /** @var Human[]  */
     public array $crew;
     public Armor $armor;
@@ -32,36 +35,32 @@ class Tank
 
     public function toString(): string
     {
-        return "Здоровье - {$this->health}\n\n
-        Броня:\n{$this->armor->toString()}\n\n
-        Шасси:\n{$this->chassis->toString()}\n\n
-        Башня:\n{$this->tower->toString()}\n\n
-        Экипаж:\n\n{$this->getTypeCrew()}";
-
+        return "Здоровье - {$this->health}\nБроня:\n{$this->armor->toString()}\nШасси:\n{$this->chassis->toString()}\nБашня:\n{$this->tower->toString()}\nЭкипаж:\n{$this->getTypeCrew()}";
     }
+
     public function getTypeCrew(): string
     {
-    $compositionTeam = [];
+        $compositionTeam = [];
 
-    foreach ($this->crew as $i => $human) {
+        foreach ($this->crew as $i => $human) {
 
-        if ($human->type === "COMMANDER"){
+            if ($human->type === Human::COMMANDER){
 
-            $compositionTeam .= $i + 1 . " Коммандир:\n{$human->toString()}\n\n";
+                $compositionTeam .= $i + 1 . " Коммандир:\n{$human->toString()}\n\n";
 
-        } elseif ($human->type === "GUNNER"){
+            } elseif ($human->type === Human::HELMSMAN){
 
-            $compositionTeam .= $i + 1 . " Заряжающий:\n{$human->toString()}\n\n";
+                $compositionTeam .= $i + 1 . " Заряжающий:\n{$human->toString()}\n\n";
 
-        } elseif ($human->type === "HELMSMAN"){
+            } elseif ($human->type === Human::GUNNER){
 
-            $compositionTeam .= $i + 1 . " Наводчик:\n{$human->toString()}\n\n";
+                $compositionTeam .= $i + 1 . " Наводчик:\n{$human->toString()}\n\n";
 
-        } elseif ($human->type === "MECHANICS"){
+            } elseif ($human->type === Human::MECHANICS){
 
-            $compositionTeam .= $i + 1 . " Механник:\n{$human->toString()}\n\n";
+                $compositionTeam .= $i + 1 . " Механник:\n{$human->toString()}\n\n";
+            }
         }
-    }
         return $compositionTeam;
     }
 
@@ -75,37 +74,5 @@ class Tank
             }
         }
         return null;
-    }
-
-    public function crewStunning(): void
-    {
-        foreach ($this->crew as $human)
-        {
-            $human->stunning();
-        }
-    }
-
-    public function isStunningCrew(): bool
-    {
-        foreach ($this->crew as $human)
-        {
-            if ($human->stunning === 0) {
-
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public function isCrewAlive(): bool
-    {
-        foreach ($this->crew as $human)
-        {
-            if ($human->health > 0) {
-
-                return true;
-            }
-        }
-        return false;
     }
 }

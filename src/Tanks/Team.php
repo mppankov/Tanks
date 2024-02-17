@@ -18,7 +18,7 @@ class Team
     {
         return "Название команды: {$this->name}\n";
     }
-    public function getTypeTank(): string
+    public function getTypeTanks(): string
     {
         $specification = [];
 
@@ -91,6 +91,7 @@ class Team
             }
         }
     }
+
 
     public function treatmentCrew(): void
     {

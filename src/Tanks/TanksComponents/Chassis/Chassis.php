@@ -13,6 +13,6 @@ abstract class Chassis
 
     public function toString(): string
     {
-        return "Скорость - {$this->speed}";
+        return " -Скорость - {$this->speed}";
     }
 }

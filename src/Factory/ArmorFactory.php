@@ -8,10 +8,6 @@ use Tanks\Tanks\TanksComponents\Armor\HeavyArmor;
 
 class ArmorFactory
 {
-    public function __construct()
-    {
-    }
-
     public function createLiteArmor(): LiteArmor
     {
         return new LiteArmor(rand(8, 12));

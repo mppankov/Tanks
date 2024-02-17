@@ -13,6 +13,6 @@ abstract class Armor
 
     public function toString(): string
     {
-        return "Защита - {$this->armor}";
+        return " -Защита - {$this->armor}";
     }
 }
